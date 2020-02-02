@@ -7,7 +7,7 @@ use PhpLab\Rest\Libs\Serializer\JsonRestSerializer;
 use PhpLab\Bundle\User\Domain\Entities\User;
 use PhpLab\Bundle\User\Domain\Forms\AuthForm;
 use PhpLab\Bundle\User\Domain\Services\AuthService;
-use PhpLab\Core\Enums\Web\HttpHeaderEnum;
+use PhpLab\Core\Enums\Http\HttpHeaderEnum;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
