@@ -10,6 +10,9 @@ class UserRepository extends BaseEloquentCrudRepository implements UserRepositor
 {
 
     protected $tableName = 'fos_user';
-    protected $entityClass = Identity::class;
 
+    public function getEntityClass(): string
+    {
+        return Identity::class;
+    }
 }
