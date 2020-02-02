@@ -3,7 +3,7 @@
 namespace PhpLab\Bundle\User\Api\Controllers;
 
 use PhpLab\Core\Domain\Exceptions\UnprocessibleEntityException;
-use PhpLab\Rest\Libs\JsonRestSerializer;
+use PhpLab\Rest\Libs\Serializer\JsonRestSerializer;
 use PhpLab\Bundle\User\Domain\Entities\User;
 use PhpLab\Bundle\User\Domain\Forms\AuthForm;
 use PhpLab\Bundle\User\Domain\Services\AuthService;
