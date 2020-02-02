@@ -1,0 +1,10 @@
+
+api_auth_index:
+    methods: [GET]
+    path: /v1/auth
+    controller: PhpLab\Bundle\User\Api\Controllers\AuthController::index
+
+api_auth_login:
+    path: /v1/auth
+    methods: [POST]
+    controller: PhpLab\Bundle\User\Api\Controllers\AuthController::login
