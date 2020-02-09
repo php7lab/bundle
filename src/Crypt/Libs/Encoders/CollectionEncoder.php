@@ -4,6 +4,7 @@ namespace PhpLab\Bundle\Crypt\Libs\Encoders;
 
 use Illuminate\Support\Collection;
 use PhpLab\Bundle\Crypt\Libs\Encoders\EncoderInterface;
+use PhpLab\Core\Domain\Helpers\EntityHelper;
 use PhpLab\Core\Helpers\InstanceHelper;
 
 class CollectionEncoder implements EncoderInterface
@@ -17,6 +18,7 @@ class CollectionEncoder implements EncoderInterface
     }
 
     public function encode($data) {
+        $data = EntityHelper::toArray($data);
         $encoders = $this->encoderCollection->all();
         foreach ($encoders as $encoderClass) {
             /** @var EncoderInterface $encoderInstance */
