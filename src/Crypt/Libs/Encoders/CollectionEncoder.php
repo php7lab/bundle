@@ -1,12 +1,12 @@
 <?php
 
-namespace PhpLab\Bundle\Crypt\Libs;
+namespace PhpLab\Bundle\Crypt\Libs\Encoders;
 
 use Illuminate\Support\Collection;
 use PhpLab\Bundle\Crypt\Libs\Encoders\EncoderInterface;
 use PhpLab\Core\Helpers\InstanceHelper;
 
-class Encoder implements EncoderInterface
+class CollectionEncoder implements EncoderInterface
 {
 
     private $encoderCollection;
