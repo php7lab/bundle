@@ -1,3 +1,0 @@
-
-api_user:
-    resource: "@UserBundle/Api/config/routes.yaml"
