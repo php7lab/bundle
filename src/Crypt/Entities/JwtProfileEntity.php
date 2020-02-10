@@ -2,7 +2,7 @@
 
 namespace PhpLab\Bundle\Crypt\Entities;
 
-use PhpLab\Core\Enums\TimeEnum;
+use PhpLab\Core\Enums\Measure\TimeEnum;
 use PhpLab\Bundle\Crypt\Enums\EncryptAlgorithmEnum;
 use PhpLab\Bundle\Crypt\Enums\EncryptFunctionEnum;
 use PhpLab\Bundle\Crypt\Enums\JwtAlgorithmEnum;

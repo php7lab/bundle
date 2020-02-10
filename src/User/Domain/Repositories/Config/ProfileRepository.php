@@ -2,7 +2,7 @@
 
 namespace PhpLab\Bundle\User\Domain\Repositories\Config;
 
-use PhpLab\Core\Enums\TimeEnum;
+use PhpLab\Core\Enums\Measure\TimeEnum;
 use PhpLab\Bundle\Crypt\Entities\JwtProfileEntity;
 use PhpLab\Bundle\Crypt\Entities\KeyEntity;
 
