@@ -7,6 +7,7 @@ use FOS\UserBundle\Model\UserInterface;
 use FOS\UserBundle\Model\UserManagerInterface;
 use Illuminate\Support\Collection;
 use PhpLab\Bundle\Crypt\Entities\JwtEntity;
+use PhpLab\Bundle\Crypt\Interfaces\Services\JwtServiceInterface;
 use PhpLab\Bundle\Crypt\Repositories\Config\ProfileRepository;
 use PhpLab\Bundle\Crypt\Services\JwtService;
 use PhpLab\Bundle\User\Domain\Entities\User;
@@ -24,12 +25,12 @@ class AuthService
     private $security;
     private $jwtService;
 
-    public function __construct(EntityManagerInterface $em, UserManagerInterface $userManager, JwtSe)
+    public function __construct(EntityManagerInterface $em, UserManagerInterface $userManager, JwtServiceInterface $jwtService)
     {
         $this->em = $em;
         $this->userManager = $userManager;
         $this->security = new Security;
-        $this->jwtService = new JwtService(new ProfileRepository);
+        $this->jwtService = $jwtService;
     }
 
     public function info(): UserInterface

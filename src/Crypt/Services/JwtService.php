@@ -6,9 +6,10 @@ use PhpLab\Bundle\Crypt\Entities\JwtEntity;
 use PhpLab\Bundle\Crypt\Helpers\JwtEncodeHelper;
 use PhpLab\Bundle\Crypt\Helpers\JwtHelper;
 use PhpLab\Bundle\Crypt\Interfaces\Repositories\ProfileRepositoryInterface;
+use PhpLab\Bundle\Crypt\Interfaces\Services\JwtServiceInterface;
 use PhpLab\Bundle\Crypt\Libs\ProfileContainer;
 
-class JwtService
+class JwtService implements JwtServiceInterface
 {
 
     private $profileRepository;
