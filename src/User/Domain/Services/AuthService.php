@@ -6,14 +6,15 @@ use Doctrine\ORM\EntityManagerInterface;
 use FOS\UserBundle\Model\UserInterface;
 use FOS\UserBundle\Model\UserManagerInterface;
 use Illuminate\Support\Collection;
-use PhpLab\Core\Legacy\Yii\Base\Security;
-use PhpLab\Core\Domain\Exceptions\UnprocessibleEntityException;
-use PhpLab\Core\Domain\Entities\ValidateErrorEntity;
 use PhpLab\Bundle\Crypt\Entities\JwtEntity;
+use PhpLab\Bundle\Crypt\Repositories\Config\ProfileRepository;
+use PhpLab\Bundle\Crypt\Services\JwtService;
 use PhpLab\Bundle\User\Domain\Entities\User;
 use PhpLab\Bundle\User\Domain\Exceptions\UnauthorizedException;
 use PhpLab\Bundle\User\Domain\Forms\AuthForm;
-use PhpLab\Bundle\User\Domain\Repositories\Config\ProfileRepository;
+use PhpLab\Core\Domain\Entities\ValidateErrorEntity;
+use PhpLab\Core\Domain\Exceptions\UnprocessibleEntityException;
+use PhpLab\Core\Legacy\Yii\Base\Security;
 
 class AuthService
 {
@@ -23,7 +24,7 @@ class AuthService
     private $security;
     private $jwtService;
 
-    public function __construct(EntityManagerInterface $em, UserManagerInterface $userManager)
+    public function __construct(EntityManagerInterface $em, UserManagerInterface $userManager, JwtSe)
     {
         $this->em = $em;
         $this->userManager = $userManager;
