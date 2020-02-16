@@ -66,7 +66,8 @@ class AuthControllerTest extends BaseRestTest
         $this->assertBody($response, $actualBody);
         $body = RestHelper::getBody($response);
         $this->assertNotEmpty(preg_match('#jwt\s[\s\S]+\.[\s\S]+\.[\s\S]+#i', $body['api_token']));
-        $this->getRestAssert()->assertStatusOk($response, HttpStatusCodeEnum::OK);
+        $this->getRestAssert($response)
+            ->assertStatusCode( HttpStatusCodeEnum::OK);
         $this->assertFalse(isset($body['password']));
     }
 
