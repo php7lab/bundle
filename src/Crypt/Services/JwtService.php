@@ -2,30 +2,32 @@
 
 namespace PhpLab\Bundle\Crypt\Services;
 
-//use PhpLab\Core\Legacy\Traits\ClassAttribute\MagicSetTrait;
 use PhpLab\Bundle\Crypt\Entities\JwtEntity;
 use PhpLab\Bundle\Crypt\Helpers\JwtEncodeHelper;
 use PhpLab\Bundle\Crypt\Helpers\JwtHelper;
+use PhpLab\Bundle\Crypt\Interfaces\Repositories\ProfileRepositoryInterface;
 use PhpLab\Bundle\Crypt\Libs\ProfileContainer;
 
 class JwtService
 {
 
-    //use MagicSetTrait;
+    private $profileRepository;
 
-    /** @var ProfileContainer */
-    private $profileContainer;
+    public function __construct(ProfileRepositoryInterface $profileRepository)
+    {
+        $this->profileRepository = $profileRepository;
+    }
 
     public function sign(JwtEntity $jwtEntity, string $profileName): string
     {
-        $profileEntity = $this->profileContainer->get($profileName);
+        $profileEntity = $this->profileRepository->oneByName($profileName);
         $token = JwtHelper::sign($jwtEntity, $profileEntity);
         return $token;
     }
 
     public function verify(string $token, string $profileName): JwtEntity
     {
-        $profileEntity = $this->profileContainer->get($profileName);
+        $profileEntity = $this->profileRepository->oneByName($profileName);
         $jwtEntity = JwtHelper::decode($token, $profileEntity);
         return $jwtEntity;
     }
@@ -44,10 +46,4 @@ class JwtService
             $this->profileContainer = $profiles;
         }
     }
-
-    public function __construct($profiles = [])
-    {
-        $this->setProfiles($profiles);
-    }
-
 }
