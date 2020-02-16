@@ -18,13 +18,13 @@ class AuthControllerTest extends BaseRestTest
             'password' => 'Wwwqqq11133333',
         ]);
 
-        $actualBody = [
+        $expectedBody = [
             [
                 'field' => 'password',
                 'message' => 'Bad password',
             ]
         ];
-        $this->assertBody($response, $actualBody);
+        $this->assertBody($response, $expectedBody);
         $this->assertEquals(HttpStatusCodeEnum::UNPROCESSABLE_ENTITY, $response->getStatusCode());
     }
 
@@ -35,13 +35,13 @@ class AuthControllerTest extends BaseRestTest
             'password' => 'Wwwqqq111',
         ]);
 
-        $actualBody = [
+        $expectedBody = [
             [
                 'field' => 'login',
                 'message' => 'User not found',
             ]
         ];
-        $this->assertBody($response, $actualBody);
+        $this->assertBody($response, $expectedBody);
         $this->assertEquals(HttpStatusCodeEnum::UNPROCESSABLE_ENTITY, $response->getStatusCode());
     }
 
@@ -52,7 +52,7 @@ class AuthControllerTest extends BaseRestTest
             'password' => 'Wwwqqq111',
         ]);
 
-        $actualBody = [
+        $expectedBody = [
             'id' => 1,
             'username' => 'user1',
             'username_canonical' => 'user1',
@@ -63,7 +63,7 @@ class AuthControllerTest extends BaseRestTest
                 'ROLE_ADMIN',
             ],
         ];
-        $this->assertBody($response, $actualBody);
+        $this->assertBody($response, $expectedBody);
         $body = RestHelper::getBody($response);
         $this->assertNotEmpty(preg_match('#jwt\s[\s\S]+\.[\s\S]+\.[\s\S]+#i', $body['api_token']));
         $this->getRestAssert($response)
