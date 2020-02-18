@@ -115,7 +115,7 @@ foreach (hash_algos() as $algo) {
     ];
 }
 EnumGeneratorHelper::generate([
-    'className' => '@yii2lab/extension/encrypt/enums/HashAlgoEnum',
+    'className' => '@PhpLab/Bundle/Crypt/Enums/HashAlgoEnum',
     'const' => $algos,
 ]);
  */
