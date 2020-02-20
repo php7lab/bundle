@@ -4,7 +4,7 @@ namespace PhpLab\Bundle\User\Domain\Entities;
 
 use Doctrine\ORM\Mapping as ORM;
 use FOS\UserBundle\Model\User as BaseUser;
-use PhpLab\Core\Domain\Interfaces\ValidateEntityInterface;
+use PhpLab\Core\Domain\Interfaces\Entity\ValidateEntityInterface;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 
