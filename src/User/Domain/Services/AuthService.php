@@ -7,7 +7,9 @@ use FOS\UserBundle\Model\UserInterface;
 use FOS\UserBundle\Model\UserManagerInterface;
 use Illuminate\Support\Collection;
 use PhpLab\Bundle\Crypt\Entities\JwtEntity;
+use PhpLab\Bundle\Crypt\Exceptions\InvalidPasswordException;
 use PhpLab\Bundle\Crypt\Interfaces\Services\JwtServiceInterface;
+use PhpLab\Bundle\Crypt\Interfaces\Services\PasswordServiceInterface;
 use PhpLab\Bundle\Crypt\Repositories\Config\ProfileRepository;
 use PhpLab\Bundle\Crypt\Services\JwtService;
 use PhpLab\Bundle\User\Domain\Entities\User;
@@ -15,21 +17,20 @@ use PhpLab\Bundle\User\Domain\Exceptions\UnauthorizedException;
 use PhpLab\Bundle\User\Domain\Forms\AuthForm;
 use PhpLab\Core\Domain\Entities\ValidateErrorEntity;
 use PhpLab\Core\Domain\Exceptions\UnprocessibleEntityException;
-use PhpLab\Core\Legacy\Yii\Base\Security;
 
 class AuthService
 {
 
     private $em;
     private $userManager;
-    private $security;
+    private $passwordService;
     private $jwtService;
 
-    public function __construct(EntityManagerInterface $em, UserManagerInterface $userManager, JwtServiceInterface $jwtService)
+    public function __construct(EntityManagerInterface $em, UserManagerInterface $userManager, JwtServiceInterface $jwtService, PasswordServiceInterface $passwordService)
     {
         $this->em = $em;
         $this->userManager = $userManager;
-        $this->security = new Security;
+        $this->passwordService = $passwordService;
         $this->jwtService = $jwtService;
     }
 
@@ -67,8 +68,9 @@ class AuthService
 
     private function verificationPassword(UserInterface $userEntity, string $password): bool
     {
-        $isValidPassword = $this->security->validatePassword($password, $userEntity->getPassword());
-        if ( ! $isValidPassword) {
+        try {
+            return $this->passwordService->validate($password, $userEntity->getPassword());
+        } catch (InvalidPasswordException $e) {
             $errorCollection = new Collection;
             $validateErrorEntity = new ValidateErrorEntity;
             $validateErrorEntity->setField('password');
@@ -78,7 +80,6 @@ class AuthService
             $exception->setErrorCollection($errorCollection);
             throw $exception;
         }
-        return $isValidPassword;
     }
 
     private function forgeToken(UserInterface $userEntity)
