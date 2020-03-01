@@ -4,7 +4,6 @@ namespace PhpLab\Bundle\Tests\rest\User;
 
 use PhpLab\Core\Enums\Http\HttpStatusCodeEnum;
 use PhpLab\Test\Base\BaseRestTest;
-use PhpLab\Test\Helpers\RestHelper;
 
 class AuthControllerTest extends BaseRestTest
 {
