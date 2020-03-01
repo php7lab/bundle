@@ -110,7 +110,7 @@ class JwtEncodeHelper
         return $loginContext->verify($msg, $algorithm, $key, $signature);
     }
 
-    private static function getFunction($type)
+    private static function getFunction(int $type): string
     {
         $isRsa = $type === OPENSSL_KEYTYPE_RSA;
         $function = $isRsa ? EncryptFunctionEnum::OPENSSL : EncryptFunctionEnum::HASH_HMAC;

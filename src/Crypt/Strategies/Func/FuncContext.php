@@ -2,19 +2,11 @@
 
 namespace PhpLab\Bundle\Crypt\Strategies\Func;
 
-use php7extension\bundle\account\domain\v3\helpers\LoginTypeHelper;
-use PhpLab\Core\Patterns\Strategy\Base\BaseStrategyContextHandlers;
 use PhpLab\Bundle\Crypt\Enums\EncryptFunctionEnum;
-use PhpLab\Bundle\Crypt\Strategies\Func\Handlers\EmailStrategy;
 use PhpLab\Bundle\Crypt\Strategies\Func\Handlers\HandlerInterface;
 use PhpLab\Bundle\Crypt\Strategies\Func\Handlers\HmacStrategy;
-use PhpLab\Bundle\Crypt\Strategies\Func\Handlers\LoginStrategy;
-use PhpLab\Bundle\Crypt\Strategies\Func\Handlers\Many;
-use PhpLab\Bundle\Crypt\Strategies\Func\Handlers\ManyToMany;
-use PhpLab\Bundle\Crypt\Strategies\Func\Handlers\One;
 use PhpLab\Bundle\Crypt\Strategies\Func\Handlers\OpenSslStrategy;
-use PhpLab\Bundle\Crypt\Strategies\Func\Handlers\PhoneStrategy;
-use PhpLab\Bundle\Crypt\Strategies\Func\Handlers\TokenStrategy;
+use PhpLab\Core\Patterns\Strategy\Base\BaseStrategyContextHandlers;
 
 /**
  * @property-read HandlerInterface $strategyInstance
