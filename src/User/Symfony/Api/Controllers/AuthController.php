@@ -1,6 +1,6 @@
 <?php
 
-namespace PhpLab\Bundle\User\Api\Controllers;
+namespace PhpLab\Bundle\User\Symfony\Api\Controllers;
 
 use PhpLab\Core\Domain\Exceptions\UnprocessibleEntityException;
 use PhpLab\Rest\Libs\Serializer\JsonRestSerializer;
