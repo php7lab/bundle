@@ -2,7 +2,9 @@
 
 namespace PhpLab\Bundle\Admin\Widgets;
 
-class MenuWidget extends \PhpLab\Web\Widgets\MenuWidget
+use PhpLab\Web\Widgets\MenuWidget as BaseMenuWidget;
+
+class MenuWidget extends BaseMenuWidget
 {
 
     public $itemOptions = [
