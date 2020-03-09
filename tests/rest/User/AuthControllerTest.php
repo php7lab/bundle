@@ -8,7 +8,7 @@ use PhpLab\Test\Base\BaseRestApiTest;
 class AuthControllerTest extends BaseRestApiTest
 {
 
-    protected $basePath = 'api/v1/';
+    protected $basePath = 'api/v1';
 
     public function testAuthBadPassword()
     {
