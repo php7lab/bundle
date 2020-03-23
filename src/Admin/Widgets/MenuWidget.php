@@ -25,7 +25,7 @@ class MenuWidget extends BaseMenuWidget
 
     public function __construct()
     {
-        $this->items = include(__DIR__ . '/../../../../../../config/menu/admin.php');
+        $this->items = include(__DIR__ . '/../../../../../../config/extra/menu/admin.php');
     }
 
 }
